@@ -53,7 +53,7 @@ router.beforeEach((to, from, next) => {
 		let token = localStorage.getItem('token');
 		//如果已经登录，则重定向至系统首页
 		if(!!token){
-			//router.push({'name': 'SystemWelcome'});
+			router.push({'name': 'SystemWelcome'});
 		}else{
 			next();
 		};

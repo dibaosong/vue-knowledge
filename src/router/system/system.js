@@ -4,6 +4,8 @@ const SystemWelcome = () => import(/* webpackChunkName:'system' */ '@/views/syst
 
 const SystemAuthManagement = () => import(/* webpackChunkName:'system' */ '@/views/system/auth_management'); //权限管理
 
+const SystemLocation = () => import(/* webpackChunkName:'system' */ '@/views/system/location'); //飞行定位
+
 
 export default({
 	path: 'system',
@@ -24,6 +26,12 @@ export default({
 			path: 'auth-management',
 			name: 'SystemAuthManagement',
 			component: SystemAuthManagement
+		},
+		{
+			//飞行定位
+			path: 'location',
+			name: 'SystemLocation',
+			component: SystemLocation
 		}
 	]
 });

@@ -1,4 +1,4 @@
-import Main from '@/views/public/main'; //公共的主体页面
+import Main from '@/views/public/mains'; //公共的主体页面
 
 import System from '@/router/system/system'; //系统
 

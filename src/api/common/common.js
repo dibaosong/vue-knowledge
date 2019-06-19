@@ -4,7 +4,7 @@ export default {
 	//获取个人信息与系统菜单
 	getMenu(data){
 		return $.get(
-			'data/main/menu.json',
+			'data/main/menus.json',
 			data
 		);
 	}

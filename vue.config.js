@@ -1,14 +1,76 @@
+// 拷贝文件插件
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const webpack = require('webpack')
+const path = require('path')
+
+
 const isDev = process.env.NODE_ENV === 'development'
+
+let cesiumSource = './node_modules/cesium/Source'
+let cesiumWorkers = '../Build/Cesium/Workers'
 
 const config = {
 	publicPath: process.env.NODE_ENV === 'development' ? '/' : '/dist/',
 
-  chainWebpack: config => {
-    config.resolve.alias
-      .set("@css", "@/assets/css");
-    config.resolve.extensions
-     .prepend('.scss')
-     .prepend('.css')
+  // chainWebpack: config => {
+  //   config.resolve.alias
+  //     .set("@css", "@/assets/css");
+  //   config.resolve.extensions
+  //    .prepend('.scss')
+  //    .prepend('.css')
+  // },
+
+  configureWebpack: {
+    output: {
+      sourcePrefix: ' '
+    },
+    amd: {
+      toUrlUndefined: true
+    },
+    resolve: {
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js',
+        '@': path.resolve('src'),
+        '@css': path.resolve('src/assets/css'),
+        'cesium': path.resolve(__dirname, cesiumSource)
+      },
+      extensions: ['.scss', '.css']
+    },
+    plugins: [
+      new CopyWebpackPlugin([{from: path.join(cesiumSource, cesiumWorkers), to: 'static/Workers'}]),
+      new CopyWebpackPlugin([{from: path.join(cesiumSource, 'Assets'), to: 'static/Assets'}]),
+      new CopyWebpackPlugin([{from: path.join(cesiumSource, 'Widgets'), to: 'static/Widgets'}]),
+      new CopyWebpackPlugin([{from: path.join(cesiumSource, 'ThirdParty/Workers'), to: 'static/ThirdParty/Workers'}]),
+      new webpack.DefinePlugin({
+        CESIUM_BASE_URL: JSON.stringify('./static')
+      })
+    ],
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            name: 'Cesium',
+            test: /[\\/]node_modules[\\/]cesium/,
+            chunks: 'all'
+          }
+        }
+      }
+    },
+    module: {
+      unknownContextCritical: /^.\/.*$/,
+      unknownContextCritical: false
+
+    }
+  },
+  css: {
+    // 启用 CSS modules
+    modules: false,
+    // 是否使用css分离插件
+    extract: true,
+    // 开启 CSS source maps?
+    sourceMap: false,
+    // css预设器配置项
+    loaderOptions: {}
   }
 };
 

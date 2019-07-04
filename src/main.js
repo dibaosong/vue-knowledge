@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 // 引入初始化样式表
-import './assets/css/lib/reset';
+import './assets/css/lib/reset.css';
 
 //router
 import router from './router/index'

@@ -30,7 +30,7 @@
 </template>
 
 <script>
-	import '@css/public/main';
+	import '@css/public/main.scss';
 
 	import api from '@/api/common/common';
 

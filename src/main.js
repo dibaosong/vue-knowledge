@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 // 引入初始化样式表
-import './assets/css/lib/reset.css';
+import './assets/css/lib/reset';
 
 //router
 import router from './router/index'
@@ -12,6 +12,12 @@ import store from './vuex/store'
 
 //axios
 import axios from 'axios';
+
+//echarts
+import echarts from 'echarts';
+Vue.prototype.$echarts = echarts;
+
+
 
 //引入ElementUI
 import ElementUI from 'element-ui';

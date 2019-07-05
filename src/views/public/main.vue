@@ -31,7 +31,7 @@
 </template>
 
 <script>
-	import '@css/public/main.scss';
+	import '@css/public/main';
 
 	import api from '@/api/common/common';
 

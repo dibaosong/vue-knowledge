@@ -37,12 +37,12 @@ const config = {
       extensions: ['.scss', '.css']
     },
     plugins: [
-      new CopyWebpackPlugin([{from: path.join(cesiumSource, cesiumWorkers), to: 'static/Workers'}]),
-      new CopyWebpackPlugin([{from: path.join(cesiumSource, 'Assets'), to: 'static/Assets'}]),
-      new CopyWebpackPlugin([{from: path.join(cesiumSource, 'Widgets'), to: 'static/Widgets'}]),
-      new CopyWebpackPlugin([{from: path.join(cesiumSource, 'ThirdParty/Workers'), to: 'static/ThirdParty/Workers'}]),
+      new CopyWebpackPlugin([{from: path.join(cesiumSource, cesiumWorkers), to: 'Cesium/Workers'}]),
+      new CopyWebpackPlugin([{from: path.join(cesiumSource, 'Assets'), to: 'Cesium/Assets'}]),
+      new CopyWebpackPlugin([{from: path.join(cesiumSource, 'Widgets'), to: 'Cesium/Widgets'}]),
+      new CopyWebpackPlugin([{from: path.join(cesiumSource, 'ThirdParty/Workers'), to: 'Cesium/ThirdParty/Workers'}]),
       new webpack.DefinePlugin({
-        CESIUM_BASE_URL: JSON.stringify('./static')
+        CESIUM_BASE_URL: JSON.stringify('./Cesium')
       })
     ],
     optimization: {

@@ -4,6 +4,8 @@ import Router from 'vue-router'
 import Login from './login/login.js'; //登录
 import Main from './public/main.js'; //公共
 
+import Rem from '@/views/login/rem';
+
 Vue.use(Router)
 
 export default new Router({
@@ -16,6 +18,11 @@ export default new Router({
     },
     Login,
     Main,
+    {
+      path: '/rem',
+      name: 'rem',
+      component: Rem
+    },
     {
       path: '*', //输入错误路由跳转至登录页
       redirect: 'login'

@@ -1,4 +1,4 @@
-const SystemMain = () => import(/* webpackChunkName:'system' */ '@/views/public/submain'); //系统页面主体
+import Layout from '@/views/public/layout';
 
 const SystemWelcome = () => import(/* webpackChunkName:'system' */ '@/views/system/welcome'); //系统欢迎页面
 
@@ -7,13 +7,13 @@ const SystemAuthManagement = () => import(/* webpackChunkName:'system' */ '@/vie
 const SystemLocation = () => import(/* webpackChunkName:'system' */ '@/views/system/location'); //飞行定位
 
 
-export default({
-	path: 'system',
+export default[{
+	path: '/system',
 	meta: {
 		requireAuth: true
 	},
-	name: 'SystemMain',
-	component: SystemMain,
+	name: 'System',
+	component: Layout,
 	children: [
 		{
 			//系统欢迎页面
@@ -34,4 +34,4 @@ export default({
 			component: SystemLocation
 		}
 	]
-});
+}];

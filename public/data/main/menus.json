@@ -26,6 +26,11 @@
 			"icon": "el-icon-picture"
 		},
 		{
+			"name": "装修页面",
+			"href": "/shop/decorate",
+			"icon": "el-icon-picture"
+		},
+		{
 			"name": "飞行定位",
 			"href": "/system/location",
 			"icon": "el-icon-location"
